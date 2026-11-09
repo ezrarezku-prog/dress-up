@@ -2,7 +2,9 @@
 using UnityEngine;
 using UnityEngine.InputSystem;  
 
-public class Dragobject : MonoBehaviour {
+public class Dragobject : MonoBehaviour
+{
+
 private bool isDragging = false;
 private Vector3 offset;
 
