@@ -1,25 +1,29 @@
 
 using UnityEngine;
+using UnityEngine.InputSystem;  
 
-public class Dragobject : MonoBehaviour
-{
-   private Vector3 mouseoffset;
+public class Dragobject : MonoBehaviour {
+private bool isDragging = false;
+private Vector3 offset;
 
-   private Vector3 GetMousePosition()
-     {
-          Vector3 mousePoint = Input.mousePosition;
-          mousePoint.z = Camera.main.WorldToScreenPoint(transform.position).z;
-          return Camera.main.ScreenToWorldPoint(mousePoint);
-     }
-
-
-   void OnMouseDown()
-     {
-          mouseoffset = transform.position - GetMousePosition();
-     }
-     
-    void OnMouseDrag()
+void Update ()
     {
-        transform.position = GetMousePosition() + mouseoffset;
+        if (isDragging)
+        {
+            transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) + offset;
+        }
+    }
+
+
+private void OnMouseDown ()
+    {
+       offset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
+       isDragging = true;
+        
+    }
+
+private void OnMouseUp ()
+    {
+        isDragging = false;
     }
 }
