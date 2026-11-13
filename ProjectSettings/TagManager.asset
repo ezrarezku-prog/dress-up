@@ -44,5 +44,8 @@ TagManager:
   - name: top_shirt
     uniqueID: 2660254983
     locked: 0
+  - name: snap
+    uniqueID: 2943112473
+    locked: 0
   m_RenderingLayers:
   - Default
